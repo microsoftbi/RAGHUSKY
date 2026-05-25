@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Data
+backend/ragusky.db*
+backend/chroma_data/
+Documents/*
+!Documents/.gitkeep
+
+# Runtime PIDs & logs
+.run/
+
+# Business logs (keep the folder, ignore the contents)
+LOG/*
+!LOG/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
