@@ -93,6 +93,25 @@ class RetrievalTestResponse(BaseModel):
     chunks: list[RetrievedChunk]
 
 
+class ChunkTestRequest(BaseModel):
+    text: str = Field(min_length=1, max_length=200_000)
+    splitter: Literal["recursive", "agentic"] = "recursive"
+    chunk_size: int = Field(default=800, ge=100, le=4000)
+    chunk_overlap: int = Field(default=120, ge=0, le=2000)
+
+
+class ChunkTestChunk(BaseModel):
+    ordinal: int
+    text: str
+    char_count: int
+
+
+class ChunkTestResponse(BaseModel):
+    splitter: str
+    chunk_count: int
+    chunks: list[ChunkTestChunk]
+
+
 class IngestConfigOut(BaseModel):
     chunk_size: int
     chunk_overlap: int

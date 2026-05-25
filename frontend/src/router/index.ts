@@ -15,6 +15,7 @@ const routes: RouteRecordRaw[] = [
       { path: 'users', name: 'admin-users', component: () => import('@/views/admin/UsersView.vue') },
       { path: 'documents', name: 'admin-documents', component: () => import('@/views/admin/DocumentsView.vue') },
       { path: 'retrieval', name: 'admin-retrieval', component: () => import('@/views/admin/RetrievalTestView.vue') },
+      { path: 'chunk-test', name: 'admin-chunk-test', component: () => import('@/views/admin/ChunkTestView.vue') },
       { path: 'ingest-config', name: 'admin-ingest-config', component: () => import('@/views/admin/IngestConfigView.vue') }
     ]
   },

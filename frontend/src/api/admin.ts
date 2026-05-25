@@ -43,6 +43,20 @@ export interface IngestConfigHistoryItem extends IngestConfig {
   changed_by: string | null
 }
 
+export type ChunkSplitter = 'recursive' | 'agentic'
+
+export interface ChunkTestChunk {
+  ordinal: number
+  text: string
+  char_count: number
+}
+
+export interface ChunkTestResponse {
+  splitter: ChunkSplitter
+  chunk_count: number
+  chunks: ChunkTestChunk[]
+}
+
 export const adminApi = {
   listUsers: () => http.get<AdminUser[]>('/admin/users').then((r) => r.data),
   createUser: (p: { username: string; password: string; role: 'user' | 'admin' }) =>
@@ -67,5 +81,12 @@ export const adminApi = {
       .put<IngestConfig & { requires_rebuild: boolean }>('/admin/ingest-config', p)
       .then((r) => r.data),
   getIngestConfigHistory: () =>
-    http.get<IngestConfigHistoryItem[]>('/admin/ingest-config/history').then((r) => r.data)
+    http.get<IngestConfigHistoryItem[]>('/admin/ingest-config/history').then((r) => r.data),
+
+  chunkTest: (p: {
+    text: string
+    splitter: ChunkSplitter
+    chunk_size?: number
+    chunk_overlap?: number
+  }) => http.post<ChunkTestResponse>('/admin/chunk-test', p).then((r) => r.data)
 }

@@ -4,6 +4,8 @@
 
 后端 FastAPI + LangChain + Chroma + SQLite,前端 Vue 3 + Element Plus。
 
+Vide coding 环境：Vs Code + Claude Code + DeepSeek V4 Pro.
+
 ---
 
 ## 核心特性

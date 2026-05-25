@@ -9,6 +9,7 @@ from app.db import Base, SessionLocal, engine
 from app.logging_setup import setup_logging
 from app.models import IngestConfig, User
 from app.routers import auth, chat, documents, sessions
+from app.routers.admin import chunk_test as admin_chunk_test
 from app.routers.admin import documents as admin_documents
 from app.routers.admin import ingest_config as admin_ingest_config
 from app.routers.admin import retrieval_test as admin_retrieval_test
@@ -81,6 +82,7 @@ def create_app() -> FastAPI:
     app.include_router(admin_documents.router, prefix=api_prefix)
     app.include_router(admin_retrieval_test.router, prefix=api_prefix)
     app.include_router(admin_ingest_config.router, prefix=api_prefix)
+    app.include_router(admin_chunk_test.router, prefix=api_prefix)
 
     @app.get("/healthz")
     def healthz() -> dict:

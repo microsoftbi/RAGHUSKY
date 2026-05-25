@@ -39,6 +39,7 @@ function logout() {
           <el-menu-item index="admin-users">用户管理</el-menu-item>
           <el-menu-item index="admin-documents">文档信息</el-menu-item>
           <el-menu-item index="admin-retrieval">召回测试</el-menu-item>
+          <el-menu-item index="admin-chunk-test">Chunking 测试</el-menu-item>
           <el-menu-item index="admin-ingest-config">切分参数</el-menu-item>
         </template>
       </el-menu>
