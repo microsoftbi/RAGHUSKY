@@ -88,5 +88,10 @@ export const adminApi = {
     splitter: ChunkSplitter
     chunk_size?: number
     chunk_overlap?: number
-  }) => http.post<ChunkTestResponse>('/admin/chunk-test', p).then((r) => r.data)
+  }) =>
+    http
+      .post<ChunkTestResponse>('/admin/chunk-test', p, {
+        timeout: p.splitter === 'agentic' ? 300_000 : 60_000
+      })
+      .then((r) => r.data)
 }

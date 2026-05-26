@@ -33,6 +33,14 @@ async function run() {
     })
     chunks.value = res.chunks
     runSplitter.value = res.splitter
+  } catch (e: any) {
+    chunks.value = []
+    runSplitter.value = null
+    const detail = e?.response?.data?.detail
+    const msg = e?.code === 'ECONNABORTED'
+      ? 'Agentic 切分超时,请重试或缩短文本'
+      : (typeof detail === 'string' ? detail : e?.message ?? '切分失败')
+    ElMessage.error(msg)
   } finally {
     loading.value = false
   }
